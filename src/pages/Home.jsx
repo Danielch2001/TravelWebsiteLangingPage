@@ -1,4 +1,8 @@
 import { MdSearch, MdCalendarToday, MdPerson } from "react-icons/md";
+import ParallaxSection from "../components/ParallaxSection";
+import HeroTitle from "../components/HeroTitle";
+import DestinationsCarousel from "../components/DestinationsCarousel";
+
 
 export default function Home() {
     const categories = [
@@ -53,62 +57,54 @@ export default function Home() {
             >
                 <div className="absolute inset-0 bg-black/20"></div>
                 <div className="absolute bottom-0 w-full h-40 bg-gradient-to-t from-white to-transparent"></div>
+                <ParallaxSection>
+                    <div className="relative z-10 px-10 pt-32 max-w-7xl mx-auto">
+                        <HeroTitle className="text-5xl md:text-6xl font-bold max-w-lg mb-8">
+                            The whole world <br /> awaits.
+                        </HeroTitle>
 
-                <div className="relative z-10 px-10 pt-32 max-w-7xl mx-auto">
-                    <h1 className="text-5xl md:text-6xl font-bold max-w-lg mb-8">
-                        The whole world <br /> awaits.
-                    </h1>
+                        {/* Barra de búsqueda */}
+                        <div className="w-full max-w-6xl mx-auto flex items-center backdrop-blur-md bg-white/25 rounded-xl px-6 py-3 shadow-lg space-x-10">
+                            <div className="flex items-center flex-1 space-x-3">
+                                <MdSearch size={20} className="text-white opacity-70" />
+                                <input type="text" placeholder="Search destinations, hotels"
+                                    className="flex-1 bg-transparent placeholder-white/70 text-white/80 focus:outline-none" />
+                            </div>
+                            <div className="flex items-center space-x-3">
+                                <MdCalendarToday size={18} className="text-white opacity-70" />
+                                <span className="text-white/60">Check in</span>
+                            </div>
+                            <div className="flex items-center space-x-3 ml-6">
+                                <MdCalendarToday size={18} className="text-white opacity-70" />
+                                <span className="text-white/60">Check out</span>
+                            </div>
+                            <div className="flex items-center space-x-3 ml-6">
+                                <MdPerson size={18} className="text-white opacity-70" />
+                                <span className="text-white/60">1 room, 2 adults</span>
+                            </div>
+                            <button className="ml-3 bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-200">Search</button>
+                        </div>
 
-                    {/* Barra de búsqueda */}
-                    <div className="w-full max-w-6xl mx-auto flex items-center backdrop-blur-md bg-white/25 rounded-xl px-6 py-3 shadow-lg space-x-10">
-                        <div className="flex items-center flex-1 space-x-3">
-                            <MdSearch size={20} className="text-white opacity-70" />
-                            <input type="text" placeholder="Search destinations, hotels"
-                                className="flex-1 bg-transparent placeholder-white/70 text-white/80 focus:outline-none" />
+                        {/* Top Categories */}
+                        <div className="mt-16">
+                            <h2 className="text-2xl font-bold mb-6">Top categories</h2>
+                            <div className="grid grid-cols-5 md:grid-cols-10 gap-8 text-center">
+                                {categories.map((cat, i) => (
+                                    <div key={i} className="flex flex-col items-center opacity-70 hover:opacity-100 transition">
+                                        <img src={cat.icon} alt={cat.name} className="w-12 h-12 mb-1" />
+                                        <p className="text-xs">{cat.name}</p>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        <div className="flex items-center space-x-3">
-                            <MdCalendarToday size={18} className="text-white opacity-70" />
-                            <span className="text-white/60">Check in</span>
-                        </div>
-                        <div className="flex items-center space-x-3 ml-6">
-                            <MdCalendarToday size={18} className="text-white opacity-70" />
-                            <span className="text-white/60">Check out</span>
-                        </div>
-                        <div className="flex items-center space-x-3 ml-6">
-                            <MdPerson size={18} className="text-white opacity-70" />
-                            <span className="text-white/60">1 room, 2 adults</span>
-                        </div>
-                        <button className="ml-3 bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-200">Search</button>
+
+                        {/* Top Vacation Destinations */}
+                        <DestinationsCarousel destinations={destinations} />
+
                     </div>
-
-                    {/* Top Categories */}
-                    <div className="mt-16">
-                        <h2 className="text-2xl font-bold mb-6">Top categories</h2>
-                        <div className="grid grid-cols-5 md:grid-cols-10 gap-8 text-center">
-                            {categories.map((cat, i) => (
-                                <div key={i} className="flex flex-col items-center opacity-70 hover:opacity-100 transition">
-                                    <img src={cat.icon} alt={cat.name} className="w-12 h-12 mb-1" />
-                                    <p className="text-xs">{cat.name}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Top Vacation Destinations */}
-                    <div className="mt-16 pb-10">
-                        <h2 className="text-2xl font-bold mb-6">Top Vacation Destinations</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {destinations.map((d, i) => (
-                                <div key={i} className="relative rounded-lg overflow-hidden shadow-lg">
-                                    <img src={d.img} alt={d.name} className="w-full h-48 object-cover" />
-                                    <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent"></div>
-                                    <p className="absolute bottom-2 left-2 text-white font-semibold text-lg">{d.name}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                </ParallaxSection>
             </section>
+
 
             {/* SEGUNDA SECCIÓN - Contenido adicional */}
             <div className="bg-white text-black px-10 max-w-7xl mx-auto hidden md:block">
@@ -171,7 +167,7 @@ export default function Home() {
                                     lineHeight: '100%'
                                 }}
                             >
-                                Plan your trip with travel expert
+                                Plan your trip with travel <br />expert
                             </h2>
                             <p className="text-white/90 mt-4 text-lg">
                                 Our professional advisors can craft your perfect itinerary

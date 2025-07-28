@@ -6,6 +6,7 @@ import Stays from "./pages/Stays";
 import Flights from "./pages/Flights";
 import Packages from "./pages/Packages";
 import SignUp from "./pages/SignUp";
+import 'animate.css';
 
 export default function App() {
   return (
